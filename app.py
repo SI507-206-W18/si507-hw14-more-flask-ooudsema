@@ -24,10 +24,11 @@ def postentry():
 def admin():
     return render_template("admin.html", entries=model.get_entries())
 
-@app.route("/delete", methods=["POST"])
+@app.route("/delete",methods=['GET', 'POST'])
 def delete():
-    _id = request.form['id']
-    model.delete_entry(_id)
+    if request.method == 'POST':
+        _id = request.form['id']
+        model.delete_entry(_id)
     return redirect("/admin")
 
 if __name__=="__main__":

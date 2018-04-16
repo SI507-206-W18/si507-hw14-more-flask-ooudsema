@@ -7,10 +7,9 @@ entries = []
 next_id = 0
 
 def init():
-    global entries, next_id
+    global entries, next_id, GUESTBOOK_ENTRIES_FILE
     try:
-
-        f = open(GUESTBOOK_ENTRIES_FILE)
+        f = open(GUESTBOOK_ENTRIES_FILE, "r")
         entries = json.loads(f.read())
         f.close()
         for each_dict in entries:
